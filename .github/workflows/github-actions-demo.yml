@@ -14,5 +14,5 @@ jobs:
         python-version: 3.8
     - name: Test with squidpy
       run: |
-        conda install squidpy
+        conda install -c conda-forge squidpy
         $CONDA/bin/squidpy

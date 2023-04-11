@@ -3,20 +3,28 @@ name: Build SquidpyR package
 on: [push]
 
 jobs:
-  build-linux:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+      with:
+        fetch-depth: 0
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.9
+
+    - uses: actions/cache@v2
+        with:
+            path: ~/.cache/pre-commit
+            key: precommit-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
     - name: Install dependencies
       run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        $CONDA/bin/conda env update --file environment.yml --name base
-    - name: Test with squidpy
+        sudo apt install pandoc optipng
+        python -m pip install --upgrade pip
+        pip install tox
+
+    - name: Lint
       run: |
-        conda install -c conda-forge squidpy
-        $CONDA/bin/squidpy
+        tox -e lint,check-docs

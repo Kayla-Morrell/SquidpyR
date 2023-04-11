@@ -7,9 +7,93 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-# Read in the data
+# Introduction
 
-```{r read_data}
-counts <- read.csv("Moffitt_and_Bambah-Mukku_et_al_merfish_all_cells.csv")
+This vignette will demonstrate to the user how to reproduce the MERFISH data
+that was used in the squidpy manuscript. The authors of squidpy documented their
+work via a Jupyter notebook that we then translated into R code. The steps below
+use purely R functions / objects to obtain the MERFISH data object that is
+present in the squidpy package.
+
+<!-- TODO: Add references to manuscript and github for squidpy -->
+
+# Data preperation
+
+First, users will need to download the raw data which we found
+[here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.8t8s248). We
+download the data and then do some data manipulation. The steps are outlined
+below.
+
+## Download data
+
+```{r download_data, eval = FALSE}
+library(rdryad)
+dat_path <- dryad_download("10.5061/dryad.8t8s248")
+counts <- read.csv(dat_path[[1]])
+``` 
+
+## Subset data
+
+We subset the full data set into metadata and counts, then retrieve the genes.
+
+```{r subset}
+metadata <- counts[,1:9]
+counts_g <- counts[,10:170]
+
+genes <- colnames(counts_g)
 ```
 
+## Creating the csr matrix
+
+First we replace all NA with 0 then create a csr matrix, dropping all 0
+elements.
+
+```{r csr_matrix}
+counts_g <- replace(counts_g, is.na(counts_g), 0)
+
+library(Matrix)
+mat <- data.matrix(counts_g)
+counts_g_sparse <- as(drop0(mat), "RsparseMatrix")
+```
+
+## Creating a SingleCellExperiment object
+
+In the Jupyter notebook the authors choose to create an AnnData object. We at
+Bioconductor prefer to represent the data as a SummarizedExperiment or
+SingleCellExperiment object. The primary difference being the composition of the
+data. We prefer to have the data represented with the genes as rows and the
+samples as columns. Then we add the spatial data as a reduced dimension.
+
+```{r sce}
+library(SingleCellExperiment)
+sce <- SingleCellExperiment(
+    assays = list(counts = t(counts_g_sparse)),
+    colData = metadata
+)
+
+spatial <- colData(sce)[,c("Centroid_X", "Centroid_Y")]
+reducedDim(sce, "spatial") <- spatial
+```
+
+## The rest of the notebook
+
+From here we try to follow the Jupyter notebook exactly using our sce object
+instead of their anndata object. Most is just data transformation. The end
+result should be the same as what is included in the squpidpy package.
+
+```{r notebook}
+sce$Bregma = sce$Bregma * 100
+
+unique(sce$Animal_ID)
+
+sce_filt <- sce[,sce$Animal_ID == 1]
+sort(unique(sce_filt$Bregma))
+
+sce_list <- c()
+spatial_list <- c()
+for (i in sort(unique(sce_filt$Bregma))) {
+    s_filt <- sce_filt[sce_filt$Bregma == i]
+    sce_list <- c(sce_list, s_filt)
+    spatial_filt <- reducedDim(s_filt)
+}
+```

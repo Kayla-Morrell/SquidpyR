@@ -15,9 +15,9 @@ jobs:
         python-version: 3.9
 
     - uses: actions/cache@v2
-        with:
-            path: ~/.cache/pre-commit
-            key: precommit-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
+      with:
+        path: ~/.cache/pre-commit
+        key: precommit-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
     - name: Install dependencies
       run: |

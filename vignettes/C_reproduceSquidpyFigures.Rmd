@@ -1,10 +1,10 @@
 ---
-title:"Reproducing figures from squidpy manuscript"
+title: "Reproducing figures from squidpy manuscript"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Reproducing figures from squidpy manuscript}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 # Introduction

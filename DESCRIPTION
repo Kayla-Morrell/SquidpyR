@@ -2,15 +2,11 @@ Package: SquidpyR
 Title: Utilizing squidpy within R
 Version: 0.99.0
 Authors@R: 
-    person("Kayla", "Interdonato", "kayla.morrell@roswellpark.org",
-            role = c("aut", "cre"))
-Description: This package serves to show a user how they might utilize the
-python package squidpy within R. Based on the squidpy paper *site* we reproduce
-data objects using strictly R code. Using the reticulate and/or basilisk package
-the user is able import the python package within their R session. This allows
-the user to use functions from directly from squidpy (and other python packages)
-with minimal code chagnes. These ideas are all demonstrated in the package
-vignettes. 
+    person(
+        "Kayla", "Interdonato", 
+        email = "kayla.morrell@roswellpark.org",
+        role = c("aut", "cre"))
+Description: This package serves to show a user how they might utilize the python package squidpy within R. Based on the squidpy paper *site* we reproduce data objects using strictly R code. Using the reticulate and/or basilisk package the user is able import the python package within their R session. This allows the user to use functions from directly from squidpy (and other python packages) with minimal code chagnes. These ideas are all demonstrated in the package vignettes. 
 License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

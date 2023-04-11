@@ -75,7 +75,7 @@ spatial <- colData(sce)[,c("Centroid_X", "Centroid_Y")]
 reducedDim(sce, "spatial") <- spatial
 ```
 
-## The rest of the notebook
+# Notebook continued
 
 From here we try to follow the Jupyter notebook exactly using our sce object
 instead of their anndata object. Most is just data transformation. The end

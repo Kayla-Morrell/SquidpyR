@@ -1,0 +1,15 @@
+---
+title: "Reproducing data in squidpy package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Reproducing data in squidpy package}
+  %\VingetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+# Read in the data
+
+```{r read_data}
+counts <- read.csv("Moffitt_and_Bambah-Mukku_et_al_merfish_all_cells.csv")
+```
+

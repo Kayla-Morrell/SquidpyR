@@ -18,3 +18,5 @@ Suggests: knitr,
     SingleCellExperiment,
     Matrix
 VignetteBuilder: knitr
+URL: https://kayla-morrell.github.io/SquidpyR/
+BugReports: https://github.com/Kayla-Morrell/SquidpyR/issues

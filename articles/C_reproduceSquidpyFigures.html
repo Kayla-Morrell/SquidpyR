@@ -51,7 +51,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Kayla-Morrell/SquidpyR/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -66,7 +73,7 @@
       <img src="" class="logo" alt=""><h1>Reproducing figures from squidpy manuscript</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/Kayla-Morrell/SquidpyR/blob/HEAD/vignettes/C_reproduceSquidpyFigures.Rmd" class="external-link"><code>vignettes/C_reproduceSquidpyFigures.Rmd</code></a></small>
       <div class="d-none name"><code>C_reproduceSquidpyFigures.Rmd</code></div>
     </div>
 
@@ -177,22 +184,22 @@ code to demonstrate where there may be some differences.</p>
 <pre><code>## Calculating neighborhood enrichment using `1` core(s)
 ## 
   0%|          | 0/1000 [00:00&lt;?, ?/s]
-  3%|3         | 31/1000 [00:00&lt;00:03, 309.81/s]
- 10%|9         | 98/1000 [00:00&lt;00:01, 517.64/s]
- 16%|#6        | 165/1000 [00:00&lt;00:01, 583.09/s]
- 23%|##2       | 229/1000 [00:00&lt;00:01, 604.19/s]
- 30%|##9       | 298/1000 [00:00&lt;00:01, 633.02/s]
- 36%|###6      | 362/1000 [00:00&lt;00:01, 631.02/s]
- 43%|####3     | 432/1000 [00:00&lt;00:00, 652.86/s]
- 50%|####9     | 498/1000 [00:00&lt;00:00, 652.61/s]
- 56%|#####6    | 564/1000 [00:00&lt;00:00, 653.27/s]
- 63%|######3   | 630/1000 [00:01&lt;00:00, 655.09/s]
- 70%|######9   | 696/1000 [00:01&lt;00:00, 656.01/s]
- 76%|#######6  | 762/1000 [00:01&lt;00:00, 656.44/s]
- 83%|########2 | 829/1000 [00:01&lt;00:00, 658.28/s]
- 90%|########9 | 895/1000 [00:01&lt;00:00, 657.86/s]
- 96%|#########6| 961/1000 [00:01&lt;00:00, 657.71/s]
-100%|##########| 1000/1000 [00:01&lt;00:00, 638.29/s]
+  1%|1         | 13/1000 [00:00&lt;00:07, 129.18/s]
+  8%|8         | 80/1000 [00:00&lt;00:02, 446.45/s]
+ 14%|#4        | 145/1000 [00:00&lt;00:01, 538.11/s]
+ 21%|##1       | 212/1000 [00:00&lt;00:01, 584.02/s]
+ 28%|##7       | 279/1000 [00:00&lt;00:01, 612.32/s]
+ 35%|###4      | 347/1000 [00:00&lt;00:01, 629.96/s]
+ 41%|####1     | 414/1000 [00:00&lt;00:00, 642.08/s]
+ 48%|####8     | 482/1000 [00:00&lt;00:00, 651.33/s]
+ 55%|#####4    | 549/1000 [00:00&lt;00:00, 655.98/s]
+ 62%|######1   | 617/1000 [00:01&lt;00:00, 661.52/s]
+ 68%|######8   | 685/1000 [00:01&lt;00:00, 661.85/s]
+ 75%|#######5  | 752/1000 [00:01&lt;00:00, 663.53/s]
+ 82%|########1 | 819/1000 [00:01&lt;00:00, 665.32/s]
+ 89%|########8 | 886/1000 [00:01&lt;00:00, 666.65/s]
+ 95%|#########5| 953/1000 [00:01&lt;00:00, 667.33/s]
+100%|##########| 1000/1000 [00:01&lt;00:00, 631.44/s]
 ## Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`
 ## Finish (0:00:01)</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>

@@ -31,6 +31,18 @@ where squidpy was installed should be active in order for this code to work.
 For examples, I named my conda environment squidpy so I'll run `conda activate
 squidpy` before running the follow code in R.
 
+```{python py_import, include = FALSE}
+import scanpy as sc
+import squidpy as sq
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+from squidpy.pl._utils import save_fig
+```
+
+
 ```{r import}
 sc <- reticulate::import("scanpy")
 sq <- reticulate::import("squidpy")
@@ -58,18 +70,24 @@ sc.settings.figdir = "./figures"
 ```
 
 ```{r set_up}
+fig_path <- tempdir()
 sc$logging$print_header()
 sc$set_figure_params(facecolor="white", figsize = c(8,8))
 sc$settings$verbosity = 'hint'
-sc$settings$figdir = "./figures"
+sc$settings$figdir = fig_path
 
-PATH_FIGURES = "./figures"
+PATH_FIGURES = fig_path
 ```
 
 ## Obtain data
 
 The data used is provided as part of the squpidpy package. We load it into R
 with the following code, note that is is an anndata object.
+
+```{python py_data, include = FALSE}
+adata = sq.datasets.seqfish()
+```
+
 
 ```{r data}
 adata <- sq$datasets$seqfish()
@@ -84,7 +102,7 @@ directory for future use.
 
 ## Figure 1
 
-```{r fig1}
+```{r fig1, dev = "png"}
 sc$pl$spatial(
     adata,
     color = "celltype_mapped_refined",
@@ -119,7 +137,7 @@ sq.pl.nhood_enrichment(
 )
 ```
 
-```{r fig2}
+```{r fig2, dev = "png"}
 sq$gr$spatial_neighbors(adata, delaunay = TRUE) # added to adata.obsp, adata.uns
 sq$gr$nhood_enrichment(adata, cluster_key = "celltype_mapped_refined", n_perms = 100) # added to adata.uns
 
@@ -142,7 +160,7 @@ sq$pl$nhood_enrichment(
 
 ## Figure 3
 
-```{r fig3}
+```{r fig3, dev = "png"}
 sq$pl$nhood_enrichment(
     adata,
     cluster_key = "celltype_mapped_refined",
@@ -160,7 +178,7 @@ sq$pl$nhood_enrichment(
 
 ## Figure 4
 
-```{r fig4}
+```{r fig4, dev = "png"}
 ax <- plt$subplots(
     figsize = c(3, 6)
 )
@@ -186,7 +204,7 @@ sc$pl$spatial(
 
 ## Figure 5
 
-```{r fig5}
+```{r fig5, dev = "png"}
 sc$pl$spatial(
     adata,
     color = "celltype_mapped_refined",
@@ -205,7 +223,7 @@ sc$pl$spatial(
 
 ## Figure 6
 
-```{r fig6}
+```{r fig6, dev = "png"}
 sq$gr$co_occurrence(
     adata,
     cluster_key = "celltype_mapped_refined"

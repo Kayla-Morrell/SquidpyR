@@ -1,0 +1,5 @@
+url: https://Kayla-Morrell.github.io/SquidpyR/
+template:
+  bootstrap: 5
+development:
+  mode: release

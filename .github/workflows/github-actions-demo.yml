@@ -3,24 +3,49 @@ name: Build SquidpyR package
 on: [push]
 
 jobs:
-  lint:
+  pkgdown:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+      - uses: actions/checkout@v3
 
-    - uses: actions/cache@v2
-      with:
-        path: ~/.cache/pre-commit
-        key: precommit-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
 
-    - name: Install dependencies
-      run: |
-        sudo apt install pandoc optipng
-        python -m pip install --upgrade pip
-        pip install squidpy
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pre-commit
+          key: precommit-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt install pandoc optipng
+          python -m pip install --upgrade pip
+          pip install squidpy
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::pkgdown, local::.
+          needs: website
+
+      - name: Build site
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs
+ 

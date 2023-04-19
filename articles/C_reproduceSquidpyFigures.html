@@ -83,14 +83,14 @@
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>This vignette will demonsrate to the user how to reproduce some
-figures from the squidpy manuscript. The authors of squpidpy documented
-their work via a Jupyter notebook that we then translated into R code.
-The steps below use the R package reticulate to translate python code
-into R code that then create figures from the manuscript. Reticulate
-makes it very easy to use python code within R with very few changes. We
-will do a couple comparisons between python code and the reticulate R
-code to demonstrate where changes may have to be made.</p>
-<!-- TODO: Add references to manuscript and github for squidpy -->
+figures from the Squidpy <a href="https://www.nature.com/articles/s41592-021-01358-2#Sec24" class="external-link">manuscript</a>.
+The authors of squpidpy documented their work via a <a href="https://github.com/theislab/squidpy_reproducibility/blob/master/notebooks/graph_figures/seqfish.ipynb" class="external-link">Jupyter
+notebook</a> that we then translated into R code. The steps below use
+the R package reticulate to translate python code into R code that then
+create figures from the manuscript. Reticulate makes it very easy to use
+python code within R with very few changes. We will do a couple
+comparisons between python code and the reticulate R code to demonstrate
+where changes may have to be made.</p>
 </div>
 <div class="section level2">
 <h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
@@ -123,20 +123,19 @@ python code chunk and then the following code chunk would be the
 corresponding R code. Some settings did not translate so I will comment
 them out in the python code.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sc.logging.print_header()</span></code></pre></div>
-<pre><code><span><span class="co">## scanpy==1.9.3 anndata==0.9.1 umap==0.5.3 numpy==1.22.4 scipy==1.9.1 pandas==1.5.3 scikit-learn==1.2.2 statsmodels==0.13.5 python-igraph==0.10.4 pynndescent==0.5.8</span></span></code></pre>
+<pre><code><span><span class="co">## scanpy==1.9.3 anndata==0.9.1 umap==0.5.3 numpy==1.22.4 scipy==1.9.1 pandas==2.0.0 scikit-learn==1.2.2 statsmodels==0.13.5 python-igraph==0.10.4 pynndescent==0.5.9</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sc.set_figure_params(facecolor<span class="op">=</span><span class="st">"white"</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sc.settings.verbosity <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sc.settings.dpi = 300</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#sq.__version__</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sc.settings.figdir <span class="op">=</span> <span class="st">"./figures"</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">fig_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">sc</span><span class="op">$</span><span class="va">logging</span><span class="op">$</span><span class="fu">print_header</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sc</span><span class="op">$</span><span class="va">logging</span><span class="op">$</span><span class="fu">print_header</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">sc</span><span class="op">$</span><span class="fu">set_figure_params</span><span class="op">(</span>facecolor<span class="op">=</span><span class="st">"white"</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">sc</span><span class="op">$</span><span class="va">settings</span><span class="op">$</span><span class="va">verbosity</span> <span class="op">=</span> <span class="st">'hint'</span></span>
-<span><span class="va">sc</span><span class="op">$</span><span class="va">settings</span><span class="op">$</span><span class="va">figdir</span> <span class="op">=</span> <span class="va">fig_path</span></span>
+<span><span class="va">sc</span><span class="op">$</span><span class="va">settings</span><span class="op">$</span><span class="va">figdir</span> <span class="op">=</span> <span class="st">"./figures"</span></span>
 <span></span>
-<span><span class="va">PATH_FIGURES</span> <span class="op">=</span> <span class="va">fig_path</span></span></code></pre></div>
+<span><span class="va">PATH_FIGURES</span> <span class="op">=</span> <span class="st">"./figures"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="obtain-data">Obtain data<a class="anchor" aria-label="anchor" href="#obtain-data"></a>
@@ -168,6 +167,9 @@ saved in the figures directory for future use.</p>
 <span>    save <span class="op">=</span> <span class="st">"_seqfish.png"</span>,</span>
 <span>    spot_size <span class="op">=</span> <span class="fl">0.03</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="figures/show_seqfish.png" alt=""><p class="caption">Figure 1</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="figure-2">Figure 2<a class="anchor" aria-label="anchor" href="#figure-2"></a>
@@ -184,22 +186,22 @@ code to demonstrate where there may be some differences.</p>
 <pre><code>## Calculating neighborhood enrichment using `1` core(s)
 ## 
   0%|          | 0/1000 [00:00&lt;?, ?/s]
-  1%|1         | 13/1000 [00:00&lt;00:07, 129.18/s]
-  8%|8         | 80/1000 [00:00&lt;00:02, 446.45/s]
- 14%|#4        | 145/1000 [00:00&lt;00:01, 538.11/s]
- 21%|##1       | 212/1000 [00:00&lt;00:01, 584.02/s]
- 28%|##7       | 279/1000 [00:00&lt;00:01, 612.32/s]
- 35%|###4      | 347/1000 [00:00&lt;00:01, 629.96/s]
- 41%|####1     | 414/1000 [00:00&lt;00:00, 642.08/s]
- 48%|####8     | 482/1000 [00:00&lt;00:00, 651.33/s]
- 55%|#####4    | 549/1000 [00:00&lt;00:00, 655.98/s]
- 62%|######1   | 617/1000 [00:01&lt;00:00, 661.52/s]
- 68%|######8   | 685/1000 [00:01&lt;00:00, 661.85/s]
- 75%|#######5  | 752/1000 [00:01&lt;00:00, 663.53/s]
- 82%|########1 | 819/1000 [00:01&lt;00:00, 665.32/s]
- 89%|########8 | 886/1000 [00:01&lt;00:00, 666.65/s]
- 95%|#########5| 953/1000 [00:01&lt;00:00, 667.33/s]
-100%|##########| 1000/1000 [00:01&lt;00:00, 631.44/s]
+  2%|1         | 17/1000 [00:00&lt;00:05, 168.95/s]
+  8%|8         | 84/1000 [00:00&lt;00:02, 456.88/s]
+ 14%|#4        | 142/1000 [00:00&lt;00:01, 510.87/s]
+ 22%|##2       | 221/1000 [00:00&lt;00:01, 614.59/s]
+ 29%|##9       | 290/1000 [00:00&lt;00:01, 640.27/s]
+ 36%|###5      | 359/1000 [00:00&lt;00:00, 656.55/s]
+ 42%|####2     | 425/1000 [00:00&lt;00:00, 651.17/s]
+ 49%|####9     | 494/1000 [00:00&lt;00:00, 661.56/s]
+ 56%|#####6    | 561/1000 [00:00&lt;00:00, 624.65/s]
+ 64%|######4   | 642/1000 [00:01&lt;00:00, 673.59/s]
+ 71%|#######1  | 710/1000 [00:01&lt;00:00, 653.77/s]
+ 78%|#######7  | 779/1000 [00:01&lt;00:00, 661.65/s]
+ 85%|########4 | 846/1000 [00:01&lt;00:00, 651.36/s]
+ 92%|#########1| 918/1000 [00:01&lt;00:00, 668.35/s]
+ 99%|#########8| 986/1000 [00:01&lt;00:00, 652.27/s]
+100%|##########| 1000/1000 [00:01&lt;00:00, 630.87/s]
 ## Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`
 ## Finish (0:00:01)</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>
@@ -236,6 +238,9 @@ code to demonstrate where there may be some differences.</p>
 <span>    vmin <span class="op">=</span> <span class="op">-</span><span class="fl">50</span>,</span>
 <span>    vmax <span class="op">=</span> <span class="fl">50</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="figures/nhood_seqfish.png" alt=""><p class="caption">Figure 2</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="figure-3">Figure 3<a class="anchor" aria-label="anchor" href="#figure-3"></a>
@@ -254,6 +259,9 @@ code to demonstrate where there may be some differences.</p>
 <span>    vmin <span class="op">=</span> <span class="op">-</span><span class="fl">50</span>,</span>
 <span>    vmax <span class="op">=</span> <span class="fl">150</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="figures/nhod_seqfish.png" alt=""><p class="caption">Figure 3</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="figure-4">Figure 4<a class="anchor" aria-label="anchor" href="#figure-4"></a>
@@ -282,6 +290,9 @@ code to demonstrate where there may be some differences.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [[1]]</span></span>
 <span><span class="co">## &lt;Axes: title={'center': 'celltype_mapped_refined'}, xlabel='spatial1', ylabel='spatial2'&gt;</span></span></code></pre>
+<div class="figure">
+<img src="figures/show_endo_seqfish.png" alt=""><p class="caption">Figure 4</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="figure-5">Figure 5<a class="anchor" aria-label="anchor" href="#figure-5"></a>
@@ -303,6 +314,9 @@ code to demonstrate where there may be some differences.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [[1]]</span></span>
 <span><span class="co">## &lt;Axes: title={'center': 'celltype_mapped_refined'}, xlabel='spatial1', ylabel='spatial2'&gt;</span></span></code></pre>
+<div class="figure">
+<img src="figures/show_meso_seqfish.png" alt=""><p class="caption">Figure 5</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="figure-6">Figure 6<a class="anchor" aria-label="anchor" href="#figure-6"></a>
@@ -323,6 +337,9 @@ code to demonstrate where there may be some differences.</p>
 <span>    dpi <span class="op">=</span> <span class="fl">300</span>,</span>
 <span>    save <span class="op">=</span> <span class="st">"co_occurrence_seqfish"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="figures/co_occurrence_seqfish.png" alt=""><p class="caption">Figure 6</p>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

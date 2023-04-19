@@ -23,7 +23,7 @@ code and the reticulate R code to demonstrate where changes may have to be made.
 # Set up
 
 
-## Import python packages
+## Import python packages {.tabset-pills}
 
 Reticulate has a very convenient function for importing the python libraries
 needed to perform certain tasks. It is important to note that the environment
@@ -32,6 +32,7 @@ where squidpy was installed should be active in order for this code to work.
 For examples, I named my conda environment squidpy so I'll run `conda activate
 squidpy` before running the follow code in R.
 
+### Python
 ```{python py_import, include = FALSE}
 import scanpy as sc
 import squidpy as sq
@@ -43,7 +44,7 @@ import numpy as np
 from squidpy.pl._utils import save_fig
 ```
 
-
+### R
 ```{r import}
 sc <- reticulate::import("scanpy")
 sq <- reticulate::import("squidpy")

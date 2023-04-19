@@ -52,7 +52,7 @@ pd <- reticulate::import("pandas")
 np <- reticulate::import("numpy")
 ```
 
-## Settings {.tabset-pills}
+## Settings {.tabset .tabset-fade .tabset-pills}
 
 There are some setting that are set in the Jupyter notebook that can be done
 here as well. When converting python code to R code any `.` will become a `$`.

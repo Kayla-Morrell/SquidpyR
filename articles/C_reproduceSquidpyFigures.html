@@ -114,7 +114,7 @@ R.</p>
 <span><span class="va">np</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"numpy"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 class="tabset-pills" id="settings">Settings<a class="anchor" aria-label="anchor" href="#settings"></a>
+<h3 class="tabset tabset-fade tabset-pills" id="settings">Settings<a class="anchor" aria-label="anchor" href="#settings"></a>
 </h3>
 <p>There are some setting that are set in the Jupyter notebook that can
 be done here as well. When converting python code to R code any
@@ -194,22 +194,22 @@ code to demonstrate where there may be some differences.</p>
 <pre><code>## Calculating neighborhood enrichment using `1` core(s)
 ## 
   0%|          | 0/1000 [00:00&lt;?, ?/s]
-  1%|1         | 12/1000 [00:00&lt;00:08, 119.62/s]
-  7%|7         | 74/1000 [00:00&lt;00:02, 411.84/s]
- 14%|#4        | 144/1000 [00:00&lt;00:01, 541.69/s]
- 21%|##1       | 212/1000 [00:00&lt;00:01, 594.86/s]
- 28%|##7       | 277/1000 [00:00&lt;00:01, 613.09/s]
- 34%|###4      | 343/1000 [00:00&lt;00:01, 628.92/s]
- 41%|####      | 409/1000 [00:00&lt;00:00, 637.22/s]
- 48%|####7     | 478/1000 [00:00&lt;00:00, 652.61/s]
- 54%|#####4    | 544/1000 [00:00&lt;00:00, 647.37/s]
- 61%|######1   | 613/1000 [00:01&lt;00:00, 654.59/s]
- 68%|######7   | 679/1000 [00:01&lt;00:00, 603.31/s]
- 74%|#######4  | 742/1000 [00:01&lt;00:00, 610.68/s]
- 82%|########2 | 825/1000 [00:01&lt;00:00, 672.36/s]
- 90%|########9 | 898/1000 [00:01&lt;00:00, 683.48/s]
- 97%|#########6| 967/1000 [00:01&lt;00:00, 679.81/s]
-100%|##########| 1000/1000 [00:01&lt;00:00, 625.01/s]
+  4%|4         | 40/1000 [00:00&lt;00:02, 394.39/s]
+ 11%|#         | 106/1000 [00:00&lt;00:01, 546.70/s]
+ 17%|#7        | 173/1000 [00:00&lt;00:01, 595.80/s]
+ 24%|##3       | 238/1000 [00:00&lt;00:01, 616.55/s]
+ 30%|###       | 304/1000 [00:00&lt;00:01, 632.04/s]
+ 37%|###6      | 368/1000 [00:00&lt;00:00, 633.01/s]
+ 44%|####3     | 437/1000 [00:00&lt;00:00, 648.52/s]
+ 50%|#####     | 502/1000 [00:00&lt;00:00, 648.88/s]
+ 57%|#####6    | 568/1000 [00:00&lt;00:00, 649.65/s]
+ 64%|######3   | 635/1000 [00:01&lt;00:00, 652.94/s]
+ 70%|#######   | 701/1000 [00:01&lt;00:00, 655.00/s]
+ 77%|#######6  | 767/1000 [00:01&lt;00:00, 654.19/s]
+ 83%|########3 | 834/1000 [00:01&lt;00:00, 657.69/s]
+ 90%|######### | 902/1000 [00:01&lt;00:00, 662.51/s]
+ 97%|#########7| 970/1000 [00:01&lt;00:00, 665.78/s]
+100%|##########| 1000/1000 [00:01&lt;00:00, 642.12/s]
 ## Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`
 ## Finish (0:00:01)</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>

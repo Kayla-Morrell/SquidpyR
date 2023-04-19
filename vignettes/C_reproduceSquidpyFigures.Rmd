@@ -7,6 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
 # Introduction
 
 This vignette will demonsrate to the user how to reproduce some figures from the
@@ -20,7 +24,9 @@ code and the reticulate R code to demonstrate where changes may have to be made.
 [manuscript]: https://www.nature.com/articles/s41592-021-01358-2#Sec24
 [Jupyter notebook]: https://github.com/theislab/squidpy_reproducibility/blob/master/notebooks/graph_figures/seqfish.ipynb
 
-# Import python packages
+# Set up
+
+## Import python packages
 
 Reticulate has a very convenient function for importing the python libraries
 needed to perform certain tasks. It is important to note that the environment
@@ -49,7 +55,7 @@ pd <- reticulate::import("pandas")
 np <- reticulate::import("numpy")
 ```
 
-# Settings {.tabset .tabset-fade .tabset-pills}
+## Settings {.tabset .tabset-pills}
 
 There are some setting that are set in the Jupyter notebook that can be done
 here as well. When converting python code to R code any `.` will become a `$`.
@@ -57,7 +63,7 @@ The first code chunk is a python code chunk and then the following code chunk
 would be the corresponding R code. Some settings did not translate so I will
 comment them out in the python code.
 
-## Python code
+### Python code
 
 ```{python settings}
 sc.logging.print_header()
@@ -68,7 +74,7 @@ sc.settings.verbosity = 3
 sc.settings.figdir = "./figures"
 ```
 
-## R code
+### R code
 
 ```{r set_up}
 sc$logging$print_header()
@@ -79,7 +85,7 @@ sc$settings$figdir = "./figures"
 PATH_FIGURES = "./figures"
 ```
 
-# Obtain data
+## Obtain data
 
 The data used is provided as part of the squpidpy package. We load it into R
 with the following code, note that is is an anndata object.

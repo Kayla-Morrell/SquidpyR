@@ -10,12 +10,13 @@ vignette: >
 # Introduction
 
 This vignette will demonstrate to the user how to reproduce the MERFISH data
-that was used in the squidpy manuscript. The authors of squidpy documented their
-work via a Jupyter notebook that we then translated into R code. The steps below
-use purely R functions / objects to obtain the MERFISH data object that is
+that was used in the squidpy [manuscript][]. The authors of squidpy documented
+their work via a [Jupyter notebook][] that we then translated into R code. The steps
+below use purely R functions / objects to obtain the MERFISH data object that is
 present in the squidpy package.
 
-<!-- TODO: Add references to manuscript and github for squidpy -->
+[manuscript]: https://www.nature.com/articles/s41592-021-01358-2#Sec24
+[Jupyter notebook]: https://github.com/theislab/squidpy_reproducibility/blob/master/notebooks/prepare_data/merfish.ipynb
 
 # Data preperation
 

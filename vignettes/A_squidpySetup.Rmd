@@ -9,7 +9,7 @@ vignette: >
 
 # Installing Squidpy
 
-Squidpy is a python package for the analysis and visualization of spatial
+[Squidpy][] is a python package for the analysis and visualization of spatial
 molecular data. Squidpy requires Python version >= 3.8 to run. You can either
 install Squidpy using `pip` or `conda`. We will be demonstrating how to install
 it using `conda`. In order to do so, the user should have `conda` or `miniconda`
@@ -17,3 +17,5 @@ installed on their system.
 
 To install Squidpy via Conda run `conda install -c conda-forge squidpy` via the
 command line.
+
+[Squidpy]: https://squidpy.readthedocs.io/en/stable/

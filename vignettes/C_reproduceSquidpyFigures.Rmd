@@ -10,14 +10,15 @@ vignette: >
 # Introduction
 
 This vignette will demonsrate to the user how to reproduce some figures from the
-squidpy manuscript. The authors of squpidpy documented their work via a Jupyter
-notebook that we then translated into R code. The steps below use the R package
-reticulate to translate python code into R code that then create figures from
-the manuscript. Reticulate makes it very easy to use python code within R with
-very few changes. We will do a couple comparisons between python code and the
-reticulate R code to demonstrate where changes may have to be made.
+Squidpy [manuscript][]. The authors of squpidpy documented their work via a
+[Jupyter notebook][] that we then translated into R code. The steps below use
+the R package reticulate to translate python code into R code that then create 
+figures from the manuscript. Reticulate makes it very easy to use python code 
+within R with very few changes. We will do a couple comparisons between python 
+code and the reticulate R code to demonstrate where changes may have to be made.
 
-<!-- TODO: Add references to manuscript and github for squidpy --> 
+[manuscript]: https://www.nature.com/articles/s41592-021-01358-2#Sec24
+[Jupyter notebook]: https://github.com/theislab/squidpy_reproducibility/blob/master/notebooks/graph_figures/seqfish.ipynb
 
 # Set up
 
@@ -70,13 +71,12 @@ sc.settings.figdir = "./figures"
 ```
 
 ```{r set_up}
-fig_path <- tempdir()
 sc$logging$print_header()
 sc$set_figure_params(facecolor="white", figsize = c(8,8))
 sc$settings$verbosity = 'hint'
-sc$settings$figdir = fig_path
+sc$settings$figdir = "./figures"
 
-PATH_FIGURES = fig_path
+PATH_FIGURES = "./figures"
 ```
 
 ## Obtain data
@@ -110,6 +110,8 @@ sc$pl$spatial(
     spot_size = 0.03
 )
 ```
+
+![Figure 1](figures/show_seqfish.png)
 
 ## Figure 2
 
@@ -158,6 +160,8 @@ sq$pl$nhood_enrichment(
 )
 ```
 
+![Figure 2](figures/nhood_seqfish.png)
+
 ## Figure 3
 
 ```{r fig3, dev = "png"}
@@ -175,6 +179,8 @@ sq$pl$nhood_enrichment(
     vmax = 150
 )
 ```
+
+![Figure 3](figures/nhod_seqfish.png)
 
 ## Figure 4
 
@@ -202,6 +208,8 @@ sc$pl$spatial(
 )
 ```
 
+![Figure 4](figures/show_endo_seqfish.png)
+
 ## Figure 5
 
 ```{r fig5, dev = "png"}
@@ -220,6 +228,8 @@ sc$pl$spatial(
     show = FALSE
 )
 ```
+
+![Figure 5](figures/show_meso_seqfish.png)
 
 ## Figure 6
 
@@ -240,3 +250,5 @@ sq$pl$co_occurrence(
     save = "co_occurrence_seqfish"
 )
 ```
+
+![Figure 6](figures/co_occurrence_seqfish.png)

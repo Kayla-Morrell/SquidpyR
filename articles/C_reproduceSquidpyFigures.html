@@ -96,7 +96,7 @@ where changes may have to be made.</p>
 <h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
 </h2>
 <div class="section level3">
-<h3 id="import-python-packages">Import python packages<a class="anchor" aria-label="anchor" href="#import-python-packages"></a>
+<h3 class="tabset-pills" id="import-python-packages">Import python packages<a class="anchor" aria-label="anchor" href="#import-python-packages"></a>
 </h3>
 <p>Reticulate has a very convenient function for importing the python
 libraries needed to perform certain tasks. It is important to note that
@@ -105,6 +105,13 @@ for this code to work.</p>
 <p>For examples, I named my conda environment squidpy so I’ll run
 <code>conda activate squidpy</code> before running the follow code in
 R.</p>
+<div class="section level4">
+<h4 id="python">Python<a class="anchor" aria-label="anchor" href="#python"></a>
+</h4>
+</div>
+<div class="section level4">
+<h4 id="r">R<a class="anchor" aria-label="anchor" href="#r"></a>
+</h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"scanpy"</span><span class="op">)</span></span>
 <span><span class="va">sq</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"squidpy"</span><span class="op">)</span></span>
@@ -112,6 +119,7 @@ R.</p>
 <span><span class="va">sns</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"seaborn"</span><span class="op">)</span></span>
 <span><span class="va">pd</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"pandas"</span><span class="op">)</span></span>
 <span><span class="va">np</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"numpy"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="settings">Settings<a class="anchor" aria-label="anchor" href="#settings"></a>
@@ -186,22 +194,22 @@ code to demonstrate where there may be some differences.</p>
 <pre><code>## Calculating neighborhood enrichment using `1` core(s)
 ## 
   0%|          | 0/1000 [00:00&lt;?, ?/s]
-  2%|1         | 17/1000 [00:00&lt;00:05, 168.95/s]
-  8%|8         | 84/1000 [00:00&lt;00:02, 456.88/s]
- 14%|#4        | 142/1000 [00:00&lt;00:01, 510.87/s]
- 22%|##2       | 221/1000 [00:00&lt;00:01, 614.59/s]
- 29%|##9       | 290/1000 [00:00&lt;00:01, 640.27/s]
- 36%|###5      | 359/1000 [00:00&lt;00:00, 656.55/s]
- 42%|####2     | 425/1000 [00:00&lt;00:00, 651.17/s]
- 49%|####9     | 494/1000 [00:00&lt;00:00, 661.56/s]
- 56%|#####6    | 561/1000 [00:00&lt;00:00, 624.65/s]
- 64%|######4   | 642/1000 [00:01&lt;00:00, 673.59/s]
- 71%|#######1  | 710/1000 [00:01&lt;00:00, 653.77/s]
- 78%|#######7  | 779/1000 [00:01&lt;00:00, 661.65/s]
- 85%|########4 | 846/1000 [00:01&lt;00:00, 651.36/s]
- 92%|#########1| 918/1000 [00:01&lt;00:00, 668.35/s]
- 99%|#########8| 986/1000 [00:01&lt;00:00, 652.27/s]
-100%|##########| 1000/1000 [00:01&lt;00:00, 630.87/s]
+  4%|4         | 40/1000 [00:00&lt;00:02, 398.03/s]
+ 11%|#         | 106/1000 [00:00&lt;00:01, 551.59/s]
+ 18%|#7        | 175/1000 [00:00&lt;00:01, 611.01/s]
+ 24%|##4       | 243/1000 [00:00&lt;00:01, 635.07/s]
+ 31%|###1      | 311/1000 [00:00&lt;00:01, 649.71/s]
+ 38%|###8      | 380/1000 [00:00&lt;00:00, 660.44/s]
+ 45%|####4     | 447/1000 [00:00&lt;00:00, 663.09/s]
+ 52%|#####1    | 515/1000 [00:00&lt;00:00, 665.66/s]
+ 58%|#####8    | 583/1000 [00:00&lt;00:00, 668.67/s]
+ 65%|######5   | 651/1000 [00:01&lt;00:00, 670.03/s]
+ 72%|#######1  | 719/1000 [00:01&lt;00:00, 669.68/s]
+ 79%|#######8  | 786/1000 [00:01&lt;00:00, 664.43/s]
+ 85%|########5 | 853/1000 [00:01&lt;00:00, 663.60/s]
+ 92%|#########2| 921/1000 [00:01&lt;00:00, 667.20/s]
+ 99%|#########8| 988/1000 [00:01&lt;00:00, 661.34/s]
+100%|##########| 1000/1000 [00:01&lt;00:00, 651.48/s]
 ## Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`
 ## Finish (0:00:01)</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>

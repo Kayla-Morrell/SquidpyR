@@ -44,6 +44,7 @@
     <a class="dropdown-item" href="../articles/A_squidpySetup.html">Setting up computer for squidpy</a>
     <a class="dropdown-item" href="../articles/B_reproduceSquidpyData.html">Reproducing data in squidpy package</a>
     <a class="dropdown-item" href="../articles/C_reproduceSquidpyFigures.html">Reproducing figures from squidpy manuscript</a>
+    <a class="dropdown-item" href="../articles/test.html">Output Rendering</a>
   </div>
 </li>
       </ul>
@@ -126,7 +127,7 @@ them out in the python code.</p>
 <h4 id="python-code">Python code<a class="anchor" aria-label="anchor" href="#python-code"></a>
 </h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sc.logging.print_header()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; scanpy==1.9.3 anndata==0.9.1 umap==0.5.3 numpy==1.22.4 scipy==1.9.1 pandas==2.0.0 scikit-learn==1.2.2 statsmodels==0.13.5 python-igraph==0.10.4 pynndescent==0.5.9</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; scanpy==1.9.3 anndata==0.9.1 umap==0.5.3 numpy==1.22.4 scipy==1.9.1 pandas==2.0.1 scikit-learn==1.2.2 statsmodels==0.13.5 python-igraph==0.10.4 pynndescent==0.5.10</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sc.set_figure_params(facecolor<span class="op">=</span><span class="st">"white"</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sc.settings.verbosity <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#sc.settings.dpi = 300</span></span>
@@ -194,38 +195,39 @@ code to demonstrate where there may be some differences.</p>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculating neighborhood enrichment using `1` core(s)</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="op">%|</span>          <span class="op">|</span> <span class="dv">0</span><span class="op">/</span><span class="dv">1000</span> [<span class="dv">00</span>:<span class="dv">00</span><span class="op">&lt;</span>?, ?<span class="op">/</span>s]</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span><span class="op">%|</span><span class="dv">4</span>         <span class="op">|</span> <span class="dv">41</span><span class="op">/</span><span class="dv">1000</span> [<span class="dv">00</span>:<span class="dv">00</span><span class="op">&lt;</span><span class="dv">00</span>:<span class="dv">0</span><span class="er">2</span>, <span class="fl">401.37</span><span class="op">/</span>s]</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">10</span><span class="op">%|</span><span class="co">#         | 104/1000 [00:00&lt;00:01, 531.78/s]</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">17</span><span class="op">%|</span><span class="co">#7        | 173/1000 [00:00&lt;00:01, 601.03/s]</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> <span class="dv">24</span><span class="op">%|</span><span class="co">##3       | 239/1000 [00:00&lt;00:01, 623.33/s]</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> <span class="dv">30</span><span class="op">%|</span><span class="co">###       | 304/1000 [00:00&lt;00:01, 632.80/s]</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a> <span class="dv">39</span><span class="op">%|</span><span class="co">###8      | 387/1000 [00:00&lt;00:00, 697.54/s]</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a> <span class="dv">46</span><span class="op">%|</span><span class="co">####5     | 457/1000 [00:00&lt;00:00, 689.27/s]</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a> <span class="dv">53</span><span class="op">%|</span><span class="co">#####2    | 526/1000 [00:00&lt;00:00, 657.12/s]</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a> <span class="dv">59</span><span class="op">%|</span><span class="co">#####9    | 594/1000 [00:00&lt;00:00, 662.79/s]</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a> <span class="dv">66</span><span class="op">%|</span><span class="co">######6   | 661/1000 [00:01&lt;00:00, 656.82/s]</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a> <span class="dv">73</span><span class="op">%|</span><span class="co">#######2  | 727/1000 [00:01&lt;00:00, 656.64/s]</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a> <span class="dv">79</span><span class="op">%|</span><span class="co">#######9  | 793/1000 [00:01&lt;00:00, 656.43/s]</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a> <span class="dv">86</span><span class="op">%|</span><span class="co">########6 | 865/1000 [00:01&lt;00:00, 674.37/s]</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a> <span class="dv">93</span><span class="op">%|</span><span class="co">#########3| 933/1000 [00:01&lt;00:00, 672.70/s]</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="op">%|</span><span class="co">##########| 1000/1000 [00:01&lt;00:00, 657.47/s]</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Finish (0:00:01)</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>sq.pl.nhood_enrichment(</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    adata,</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    cluster_key<span class="op">=</span><span class="st">"celltype_mapped_refined"</span>,</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"coolwarm"</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"ward"</span>,</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">300</span>,</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>),</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    save<span class="op">=</span><span class="st">"nhod_seqfish.png"</span>,</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    cbar_kwargs<span class="op">=</span>{<span class="st">"label"</span>: <span class="st">"Z-score"</span>},</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=-</span><span class="dv">50</span>,</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span><span class="op">%|</span><span class="dv">3</span>         <span class="op">|</span> <span class="dv">30</span><span class="op">/</span><span class="dv">1000</span> [<span class="dv">00</span>:<span class="dv">00</span><span class="op">&lt;</span><span class="dv">00</span>:<span class="dv">0</span><span class="er">3</span>, <span class="fl">299.50</span><span class="op">/</span>s]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">10</span><span class="op">%|</span><span class="dv">9</span>         <span class="op">|</span> <span class="dv">97</span><span class="op">/</span><span class="dv">1000</span> [<span class="dv">00</span>:<span class="dv">00</span><span class="op">&lt;</span><span class="dv">00</span>:<span class="dv">0</span><span class="er">1</span>, <span class="fl">514.15</span><span class="op">/</span>s]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">16</span><span class="op">%|</span><span class="co">#6        | 163/1000 [00:00&lt;00:01, 578.12/s]</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> <span class="dv">23</span><span class="op">%|</span><span class="co">##2       | 229/1000 [00:00&lt;00:01, 609.83/s]</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> <span class="dv">30</span><span class="op">%|</span><span class="co">##9       | 296/1000 [00:00&lt;00:01, 625.64/s]</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a> <span class="dv">36</span><span class="op">%|</span><span class="co">###6      | 363/1000 [00:00&lt;00:00, 638.33/s]</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a> <span class="dv">43</span><span class="op">%|</span><span class="co">####2     | 429/1000 [00:00&lt;00:00, 642.64/s]</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a> <span class="dv">50</span><span class="op">%|</span><span class="co">####9     | 496/1000 [00:00&lt;00:00, 650.95/s]</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a> <span class="dv">56</span><span class="op">%|</span><span class="co">#####6    | 564/1000 [00:00&lt;00:00, 659.02/s]</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a> <span class="dv">63</span><span class="op">%|</span><span class="co">######3   | 632/1000 [00:01&lt;00:00, 663.32/s]</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a> <span class="dv">70</span><span class="op">%|</span><span class="co">#######   | 702/1000 [00:01&lt;00:00, 671.87/s]</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a> <span class="dv">77</span><span class="op">%|</span><span class="co">#######7  | 770/1000 [00:01&lt;00:00, 673.80/s]</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a> <span class="dv">84</span><span class="op">%|</span><span class="co">########3 | 838/1000 [00:01&lt;00:00, 666.53/s]</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a> <span class="dv">91</span><span class="op">%|</span><span class="co">######### | 908/1000 [00:01&lt;00:00, 673.97/s]</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a> <span class="dv">98</span><span class="op">%|</span><span class="co">#########8| 980/1000 [00:01&lt;00:00, 687.31/s]</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="op">%|</span><span class="co">##########| 1000/1000 [00:01&lt;00:00, 646.21/s]</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Adding `adata.uns['celltype_mapped_refined_nhood_enrichment']`</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Finish (0:00:01)</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array(adata.uns[<span class="st">"celltype_mapped_refined_nhood_enrichment"</span>][<span class="st">"zscore"</span>])</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>sq.pl.nhood_enrichment(</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    adata,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    cluster_key<span class="op">=</span><span class="st">"celltype_mapped_refined"</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"coolwarm"</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"ward"</span>,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>),</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    save<span class="op">=</span><span class="st">"nhod_seqfish.png"</span>,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    cbar_kwargs<span class="op">=</span>{<span class="st">"label"</span>: <span class="st">"Z-score"</span>},</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=-</span><span class="dv">50</span>,</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq</span><span class="op">$</span><span class="va">gr</span><span class="op">$</span><span class="fu">spatial_neighbors</span><span class="op">(</span><span class="va">adata</span>, delaunay <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># added to adata.obsp, adata.uns</span></span>
 <span><span class="va">sq</span><span class="op">$</span><span class="va">gr</span><span class="op">$</span><span class="fu">nhood_enrichment</span><span class="op">(</span><span class="va">adata</span>, cluster_key <span class="op">=</span> <span class="st">"celltype_mapped_refined"</span>, n_perms <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># added to adata.uns</span></span>

@@ -89,11 +89,21 @@ unique(sce$Animal_ID)
 sce_filt <- sce[,sce$Animal_ID == 1]
 sort(unique(sce_filt$Bregma))
 
-#sce_list <- c()
-#spatial_list <- c()
-#for (i in sort(unique(sce_filt$Bregma))) {
-#    s_filt <- sce_filt[sce_filt$Bregma == i]
-#    sce_list <- c(sce_list, s_filt)
-#    spatial_filt <- reducedDim(s_filt)
-#}
+sce_list <- sce_filt[,FALSE]
+spatial_list <- DataFrame("Centroid_X" = NA, "Centroid_Y" = NA)[numeric(0),]
+for (i in sort(unique(sce_filt$Bregma))) {
+    s_filt <- sce_filt[,sce_filt$Bregma == i]
+    sce_list <- cbind(sce_list, s_filt)
+    spatial_filt <- reducedDim(s_filt)
+    spatial_filt <- DataFrame(apply(spatial_filt, 2, function(x) (x - min(x))/(max(x)-min(x))))
+    spatial_list <- rbind(spatial_list, spatial_filt)
+}
+
+sce_total <- sce_list
+spatial_total <- spatial_list
+
+spatial3d <- cbind(spatial_total, sce_total$Bregma)
+reducedDim(sce_total, "spatial3d") <- spatial3d
+
+colData(sce)
 ```
